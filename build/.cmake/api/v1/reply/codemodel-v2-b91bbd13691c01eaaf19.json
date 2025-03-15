@@ -1,0 +1,78 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.20"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "HW9",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "dijkstra_main::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dijkstra_main-Debug-04eabdc30d4e3aceecd3.json",
+					"name" : "dijkstra_main",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ladder_main::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ladder_main-Debug-ea8a8de4ebe3f70c5790.json",
+					"name" : "ladder_main",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "student_gtests::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-student_gtests-Debug-88f33d96755600802a38.json",
+					"name" : "student_gtests",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/eyim3/ics46/ics-46-hw-9-literaiiy/build",
+		"source" : "/home/eyim3/ics46/ics-46-hw-9-literaiiy"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

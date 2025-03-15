@@ -1,0 +1,1 @@
+/usr/bin/g++ -Wall -Wextra -Wpedantic -Wfatal-errors -Werror=vla -ggdb -fsanitize=address,undefined -fsanitize-recover=all -g -fsanitize=address,undefined -fsanitize-recover=all CMakeFiles/dijkstra_main.dir/src/dijkstras.cpp.o CMakeFiles/dijkstra_main.dir/src/dijkstras_main.cpp.o -o dijkstra_main 

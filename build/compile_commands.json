@@ -1,0 +1,42 @@
+[
+{
+  "directory": "/home/eyim3/ics46/ics-46-hw-9-literaiiy/build",
+  "command": "/usr/bin/g++   -Wall -Wextra -Wpedantic -Wfatal-errors -Werror=vla -ggdb -fsanitize=address,undefined -fsanitize-recover=all -g -std=c++20 -o CMakeFiles/dijkstra_main.dir/src/dijkstras.cpp.o -c /home/eyim3/ics46/ics-46-hw-9-literaiiy/src/dijkstras.cpp",
+  "file": "/home/eyim3/ics46/ics-46-hw-9-literaiiy/src/dijkstras.cpp"
+},
+{
+  "directory": "/home/eyim3/ics46/ics-46-hw-9-literaiiy/build",
+  "command": "/usr/bin/g++   -Wall -Wextra -Wpedantic -Wfatal-errors -Werror=vla -ggdb -fsanitize=address,undefined -fsanitize-recover=all -g -std=c++20 -o CMakeFiles/dijkstra_main.dir/src/dijkstras_main.cpp.o -c /home/eyim3/ics46/ics-46-hw-9-literaiiy/src/dijkstras_main.cpp",
+  "file": "/home/eyim3/ics46/ics-46-hw-9-literaiiy/src/dijkstras_main.cpp"
+},
+{
+  "directory": "/home/eyim3/ics46/ics-46-hw-9-literaiiy/build",
+  "command": "/usr/bin/g++   -Wall -Wextra -Wpedantic -Wfatal-errors -Werror=vla -ggdb -fsanitize=address,undefined -fsanitize-recover=all -g -std=c++20 -o CMakeFiles/ladder_main.dir/src/ladder.cpp.o -c /home/eyim3/ics46/ics-46-hw-9-literaiiy/src/ladder.cpp",
+  "file": "/home/eyim3/ics46/ics-46-hw-9-literaiiy/src/ladder.cpp"
+},
+{
+  "directory": "/home/eyim3/ics46/ics-46-hw-9-literaiiy/build",
+  "command": "/usr/bin/g++   -Wall -Wextra -Wpedantic -Wfatal-errors -Werror=vla -ggdb -fsanitize=address,undefined -fsanitize-recover=all -g -std=c++20 -o CMakeFiles/ladder_main.dir/src/ladder_main.cpp.o -c /home/eyim3/ics46/ics-46-hw-9-literaiiy/src/ladder_main.cpp",
+  "file": "/home/eyim3/ics46/ics-46-hw-9-literaiiy/src/ladder_main.cpp"
+},
+{
+  "directory": "/home/eyim3/ics46/ics-46-hw-9-literaiiy/build",
+  "command": "/usr/bin/g++  -I/home/eyim3/ics46/ics-46-hw-9-literaiiy/src -Wall -Wextra -Wpedantic -Wfatal-errors -Werror=vla -ggdb -fsanitize=address,undefined -fsanitize-recover=all -g -DGTEST_HAS_PTHREAD=1 -std=c++20 -o CMakeFiles/student_gtests.dir/gtest/gtestmain.cpp.o -c /home/eyim3/ics46/ics-46-hw-9-literaiiy/gtest/gtestmain.cpp",
+  "file": "/home/eyim3/ics46/ics-46-hw-9-literaiiy/gtest/gtestmain.cpp"
+},
+{
+  "directory": "/home/eyim3/ics46/ics-46-hw-9-literaiiy/build",
+  "command": "/usr/bin/g++  -I/home/eyim3/ics46/ics-46-hw-9-literaiiy/src -Wall -Wextra -Wpedantic -Wfatal-errors -Werror=vla -ggdb -fsanitize=address,undefined -fsanitize-recover=all -g -DGTEST_HAS_PTHREAD=1 -std=c++20 -o CMakeFiles/student_gtests.dir/gtest/student_gtests.cpp.o -c /home/eyim3/ics46/ics-46-hw-9-literaiiy/gtest/student_gtests.cpp",
+  "file": "/home/eyim3/ics46/ics-46-hw-9-literaiiy/gtest/student_gtests.cpp"
+},
+{
+  "directory": "/home/eyim3/ics46/ics-46-hw-9-literaiiy/build",
+  "command": "/usr/bin/g++  -I/home/eyim3/ics46/ics-46-hw-9-literaiiy/src -Wall -Wextra -Wpedantic -Wfatal-errors -Werror=vla -ggdb -fsanitize=address,undefined -fsanitize-recover=all -g -DGTEST_HAS_PTHREAD=1 -std=c++20 -o CMakeFiles/student_gtests.dir/src/dijkstras.cpp.o -c /home/eyim3/ics46/ics-46-hw-9-literaiiy/src/dijkstras.cpp",
+  "file": "/home/eyim3/ics46/ics-46-hw-9-literaiiy/src/dijkstras.cpp"
+},
+{
+  "directory": "/home/eyim3/ics46/ics-46-hw-9-literaiiy/build",
+  "command": "/usr/bin/g++  -I/home/eyim3/ics46/ics-46-hw-9-literaiiy/src -Wall -Wextra -Wpedantic -Wfatal-errors -Werror=vla -ggdb -fsanitize=address,undefined -fsanitize-recover=all -g -DGTEST_HAS_PTHREAD=1 -std=c++20 -o CMakeFiles/student_gtests.dir/src/ladder.cpp.o -c /home/eyim3/ics46/ics-46-hw-9-literaiiy/src/ladder.cpp",
+  "file": "/home/eyim3/ics46/ics-46-hw-9-literaiiy/src/ladder.cpp"
+}
+]

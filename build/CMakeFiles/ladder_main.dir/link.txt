@@ -1,0 +1,1 @@
+/usr/bin/g++ -Wall -Wextra -Wpedantic -Wfatal-errors -Werror=vla -ggdb -fsanitize=address,undefined -fsanitize-recover=all -g -fsanitize=address,undefined -fsanitize-recover=all CMakeFiles/ladder_main.dir/src/ladder.cpp.o CMakeFiles/ladder_main.dir/src/ladder_main.cpp.o -o ladder_main 
