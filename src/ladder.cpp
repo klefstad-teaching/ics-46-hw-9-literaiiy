@@ -7,6 +7,7 @@
 #include <string>
 #include <cmath>
 #include <algorithm>
+#include <map>
 
 using namespace std;
 
@@ -42,22 +43,31 @@ bool edit_distance_within(const string& str1, const string& str2, int d) {
     return dp[m][n] <= d;
 }
 
-// Updated: identical words are now considered adjacent (0 edit distance is within 1)
+// Updated: identical words are now considered adjacent (0 edit distance ≤ 1)
 bool is_adjacent(const string& word1, const string& word2) {
     return edit_distance_within(word1, word2, 1);
 }
 
-// Revised generate_word_ladder uses a modifiable copy of word_list to remove words as they are used.
+/*
+  Revised generate_word_ladder:
+  
+  Instead of iterating over the entire dictionary (which can be very slow or even cause an infinite loop when no solution exists), 
+  we partition the dictionary by word length. Since an adjacent word can only have a length equal to, one less, or one more than 
+  the current word, we only iterate over those groups. This should speed up the search dramatically.
+*/
 vector<string> generate_word_ladder(const string& begin_word, const string& end_word, const set<string>& original_word_list) {
     if (begin_word == end_word) {
         error(begin_word, end_word, "Start and end words are the same");
         return vector<string>();
     }
 
-    // Make a copy of the dictionary so we can remove words as they’re used.
-    set<string> remaining = original_word_list;
-    // If the begin word is in the dictionary, remove it.
-    remaining.erase(begin_word);
+    // Partition the dictionary by word length.
+    map<int, set<string>> remaining_by_length;
+    for (const auto &word : original_word_list) {
+        remaining_by_length[word.size()].insert(word);
+    }
+    // Remove the begin word from the appropriate group (if present)
+    remaining_by_length[begin_word.size()].erase(begin_word);
 
     queue<vector<string>> ladder_queue;
     vector<string> start = {begin_word};
@@ -68,22 +78,27 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
         ladder_queue.pop();
         string last_word = ladder.back();
 
-        // To avoid iterating over the entire set repeatedly, collect words to remove.
-        vector<string> to_remove;
-        for (const string &word : remaining) {
-            if (is_adjacent(last_word, word)) {
-                vector<string> new_ladder = ladder;
-                new_ladder.push_back(word);
-                if (word == end_word) {
-                    return new_ladder;
+        // Only words of length last_word.size()-1, last_word.size(), or last_word.size()+1 can be adjacent.
+        for (int len = last_word.size() - 1; len <= last_word.size() + 1; len++) {
+            if (len < 1) continue; // skip invalid lengths
+            if (remaining_by_length.find(len) == remaining_by_length.end()) continue;
+            // For each word in this length group, check if it's adjacent.
+            vector<string> words_to_remove;
+            for (const string &word : remaining_by_length[len]) {
+                if (is_adjacent(last_word, word)) {
+                    vector<string> new_ladder = ladder;
+                    new_ladder.push_back(word);
+                    if (word == end_word) {
+                        return new_ladder;
+                    }
+                    ladder_queue.push(new_ladder);
+                    words_to_remove.push_back(word);
                 }
-                ladder_queue.push(new_ladder);
-                to_remove.push_back(word);
             }
-        }
-        // Remove all words that have been used in this iteration.
-        for (const string &word : to_remove) {
-            remaining.erase(word);
+            // Remove words that were used from this group.
+            for (const string &word : words_to_remove) {
+                remaining_by_length[len].erase(word);
+            }
         }
     }
     error(begin_word, end_word, "No word ladder found");
@@ -106,10 +121,10 @@ void load_words(set<string>& word_list, const string& file_name) {
     infile.close();
 }
 
-// Updated print_word_ladder: print with the prefix and words separated by a space.
+// Updated: print without arrows, with prefix "Word ladder found: " and words separated by a space.
 void print_word_ladder(const vector<string>& ladder) {
     if (ladder.empty()) {
-        cout << "No word ladder found." << "\n";
+        cout << "No word ladder found.\n";
         return;
     }
     cout << "Word ladder found: ";
