@@ -1,5 +1,4 @@
 #include "dijkstras.h"
-
 #include <iostream>
 #include <queue>
 #include <vector>
@@ -21,12 +20,10 @@ struct NodeCompare {
 };
 
 vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& previous) {
-    // Initialize distance vector with INF and visited vector with false.
     vector<int> distances(G.numVertices, INF);
     vector<bool> visited(G.numVertices, false);
-    previous.assign(G.numVertices, -1);  // Set all previous vertices to -1 initially.
+    previous.assign(G.numVertices, -1);
 
-    // Priority queue for processing vertices in order of increasing distance.
     priority_queue<Node, vector<Node>, NodeCompare> pq;
     distances[source] = 0;
     pq.push(Node(source, 0));
@@ -36,11 +33,10 @@ vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& prev
         pq.pop();
         int u = current.vertex;
 
-        // Skip if this vertex has been visited already.
-        if (visited[u]) continue;
+        if (visited[u])
+            continue;
         visited[u] = true;
 
-        // For every edge from u to v, try to relax the edge.
         for (const Edge &edge : G[u]) {
             int v = edge.dst;
             int weight = edge.weight;
@@ -51,7 +47,6 @@ vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& prev
             }
         }
     }
-
     return distances;
 }
 
@@ -69,15 +64,13 @@ vector<int> extract_shortest_path(const vector<int>& distances, const vector<int
 
 void print_path(const vector<int>& v, int total) {
     if (v.empty()) {
+        // When there is no path, only print "No path exists." (as required by the tests)
         cout << "No path exists." << endl;
         return;
     }
-    cout << "Path: ";
-    for (size_t i = 0; i < v.size(); ++i) {
-        cout << v[i];
-        if (i != v.size() - 1) {
-            cout << " -> ";
-        }
+    // Print vertices separated by a space (with a trailing space)
+    for (int vertex : v) {
+        cout << vertex << " ";
     }
-    cout << "\nTotal cost: " << total << endl;
+    cout << "\nTotal cost is " << total << "\n";
 }
