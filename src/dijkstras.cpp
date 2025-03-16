@@ -63,12 +63,12 @@ vector<int> extract_shortest_path(const vector<int>& distances, const vector<int
 }
 
 void print_path(const vector<int>& v, int total) {
+    // When the path vector is empty, print a blank line (i.e. no path) and then the cost.
     if (v.empty()) {
-        // When there is no path, only print "No path exists." (as required by the tests)
-        cout << "No path exists." << endl;
+        cout << "\nTotal cost is " << total << "\n";
         return;
     }
-    // Print vertices separated by a space (with a trailing space)
+    // Otherwise, print the vertices separated by a space (with trailing space)
     for (int vertex : v) {
         cout << vertex << " ";
     }
