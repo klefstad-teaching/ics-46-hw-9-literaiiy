@@ -94,8 +94,8 @@ vector<string> get_neighbors(const string &word) {
   Revised generate_word_ladder:
   We partition the dictionary by word length, then use the get_neighbors helper to generate
   all candidate words one edit away from the current word. For each candidate, we check whether 
-  it exists in our dictionary partition. If so, we enqueue a new ladder with that candidate and 
-  immediately remove it from the dictionary.
+  it exists in our dictionary partition. Valid candidates are collected and sorted lexicographically
+  before being enqueued.
 */
 vector<string> generate_word_ladder(const string& begin_word, const string& end_word, const set<string>& original_word_list) {
     if (begin_word == end_word) {
@@ -122,19 +122,27 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
         
         // Generate all candidate neighbors (one edit away).
         vector<string> candidates = get_neighbors(last_word);
+        // Collect valid neighbors (those in our dictionary) in a vector.
+        vector<string> valid_neighbors;
         for (const string &candidate : candidates) {
             int candidate_len = candidate.size();
-            // Check if candidate exists in our partition for its length.
-            if (remaining_by_length.count(candidate_len) && remaining_by_length[candidate_len].find(candidate) != remaining_by_length[candidate_len].end()) {
-                // Candidate is valid; remove it to prevent reuse.
-                remaining_by_length[candidate_len].erase(candidate);
-                vector<string> new_ladder = ladder;
-                new_ladder.push_back(candidate);
-                if (candidate == end_word) {
-                    return new_ladder;
-                }
-                ladder_queue.push(new_ladder);
+            if (remaining_by_length.count(candidate_len) &&
+                remaining_by_length[candidate_len].find(candidate) != remaining_by_length[candidate_len].end()) {
+                valid_neighbors.push_back(candidate);
             }
+        }
+        // Sort valid neighbors lexicographically.
+        sort(valid_neighbors.begin(), valid_neighbors.end());
+        
+        // Enqueue each valid neighbor.
+        for (const string &candidate : valid_neighbors) {
+            remaining_by_length[candidate.size()].erase(candidate);
+            vector<string> new_ladder = ladder;
+            new_ladder.push_back(candidate);
+            if (candidate == end_word) {
+                return new_ladder;
+            }
+            ladder_queue.push(new_ladder);
         }
     }
     error(begin_word, end_word, "No word ladder found");
