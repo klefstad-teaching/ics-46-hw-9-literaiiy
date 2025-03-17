@@ -134,39 +134,24 @@ void print_word_ladder(const vector<string>& ladder) {
     cout << "\n";
 }
 
+#define my_assert(e) {cout << #e << ((e) ? " passed": " failed") << endl;}
+
 void verify_word_ladder() {
+
     set<string> word_list;
+
     load_words(word_list, "words.txt");
 
-    vector<string> ladder;
+    my_assert(generate_word_ladder("cat", "dog", word_list).size() == 4);
 
-    // Test 1: "cat" to "dog"
-    ladder = generate_word_ladder("cat", "dog", word_list);
-    cout << "Test 1 (cat -> dog), ladder length: " << ladder.size() << "\n";
-    print_word_ladder(ladder);
+    my_assert(generate_word_ladder("marty", "curls", word_list).size() == 6);
 
-    // Test 2: "marty" to "curls"
-    ladder = generate_word_ladder("marty", "curls", word_list);
-    cout << "Test 2 (marty -> curls), ladder length: " << ladder.size() << "\n";
-    print_word_ladder(ladder);
+    my_assert(generate_word_ladder("code", "data", word_list).size() == 6);
 
-    // Test 3: "code" to "data"
-    ladder = generate_word_ladder("code", "data", word_list);
-    cout << "Test 3 (code -> data), ladder length: " << ladder.size() << "\n";
-    print_word_ladder(ladder);
+    my_assert(generate_word_ladder("work", "play", word_list).size() == 6);
 
-    // Test 4: "work" to "play"
-    ladder = generate_word_ladder("work", "play", word_list);
-    cout << "Test 4 (work -> play), ladder length: " << ladder.size() << "\n";
-    print_word_ladder(ladder);
+    my_assert(generate_word_ladder("sleep", "awake", word_list).size() == 8);
 
-    // Test 5: "sleep" to "awake"
-    ladder = generate_word_ladder("sleep", "awake", word_list);
-    cout << "Test 5 (sleep -> awake), ladder length: " << ladder.size() << "\n";
-    print_word_ladder(ladder);
+    my_assert(generate_word_ladder("car", "cheat", word_list).size() == 4);
 
-    // Test 6: "car" to "cheat"
-    ladder = generate_word_ladder("car", "cheat", word_list);
-    cout << "Test 6 (car -> cheat), ladder length: " << ladder.size() << "\n";
-    print_word_ladder(ladder);
 }
